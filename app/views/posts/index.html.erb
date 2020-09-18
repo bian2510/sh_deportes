@@ -7,12 +7,12 @@
     <h5 class="card-header dark"><%= post.category.capitalize %></h5>
     <div class="card-body">
       <h5 class="card-title"><%= post.title %></h5>
-      <p class="card-text"><%= post.body %>.</p>
+      <p class="card-text"><%= truncate(post.body, separator: ' ', length: 160) %>.</p>
       
       <%= link_to 'Show', post, class: "btn btn-dark" %>
     </div>
     <div class="card-footer text-muted">
-      <%= post.created_at %>
+      <%= post.created_at.strftime('%Y-%m-%d') %>
     </div>
   </div>
   
