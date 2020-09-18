@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Noticias</h1>
+
+<% @posts.each do |post| %>
+  <div class="card post_min_container">
+    <h5 class="card-header dark"><%= post.category.capitalize %></h5>
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"><%= post.body %>.</p>
+      
+      <%= link_to 'Show', post, class: "btn btn-dark" %>
+    </div>
+    <div class="card-footer text-muted">
+      <%= post.created_at %>
+    </div>
+  </div>
+  
+    <% link_to 'Edit', edit_post_path(post) %>
+    <% link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </tr>
+<% end %>
+<br>
+
+<%= link_to 'New Post', new_post_path %>
