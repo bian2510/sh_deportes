@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     if params[:category].present?
       @posts = Post.where(category: params[:category])
     else
-      @posts = Post.all
+      @posts = Post.paginate(page: params[:page], per_page: 2)
     end
   end
 
@@ -30,6 +30,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.cover.attach(post_params[:cover])
 
     respond_to do |format|
       if @post.save
@@ -74,6 +75,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :category)
+      params.require(:post).permit(:title, :body, :category, :cover)
     end
 end
