@@ -1,3 +1,5 @@
+
+<div class="container col-lg-8 col-md-6 col-xs-12">
 <%= form_with(model: post, local: true) do |form| %>
   <% if post.errors.any? %>
     <div id="error_explanation">
@@ -10,23 +12,30 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: "form-control col-lg-3 col-md-12 col-xs-12" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: "form-control col-lg-12 col-md-12 col-xs-12" %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <h4>Categoria</h4>
-    <%= form.select(:category, options_for_select([['Futbol', 'futbol'], ['Baloncesto', 'basketball'], ['Baseball', 'baseball']])) %>
+    <%= form.select(:category, 
+                    options_for_select([
+                                        ['Seleccione', nil], 
+                                        ['Futbol', 'futbol'], 
+                                        ['Baloncesto', 'basketball'], 
+                                        ['Baseball', 'baseball']])
+                    )
+    %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+</div>
