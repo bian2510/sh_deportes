@@ -5,9 +5,9 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     if params[:category].present?
-      @posts = Post.where(category: params[:category])
+      @posts = Post.paginate(page: params[:page], per_page: 10).where(category: params[:category])
     else
-      @posts = Post.paginate(page: params[:page], per_page: 2)
+      @posts = Post.paginate(page: params[:page], per_page: 10)
     end
   end
 
