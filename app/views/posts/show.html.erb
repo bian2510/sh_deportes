@@ -6,7 +6,7 @@
   </p>
   <%= image_tag(url_for(@post.cover), class: "container col-lg-12 col-md-12 col-xs-12") %>
   <p>
-    <h5><%= @post.body %></h5>
+    <h5><%= simple_format(@post.body.capitalize, class: 'h5') %></h5>
   </p>
   <div>
     <br>
@@ -20,7 +20,7 @@
           <span class="font-weight-bold"><%= "#{comment.name.capitalize} #{comment.last_name.capitalize}"%></span>
           <span class="text-muted"><%= "#{comment.created_at.strftime('%Y-%m-%d')}"%></span>
         <p>
-          <%= comment.body.capitalize%>
+          <%= simple_format(comment.body.capitalize)%>
         </p>
         </li>
       </ul>
