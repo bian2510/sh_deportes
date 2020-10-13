@@ -4,7 +4,9 @@
   <p>
     <h1><%= @post.title.capitalize %></h1>
   </p>
-  <%= image_tag(url_for(@post.cover), id: "post-image-show", class: "container col-lg-12 col-md-12 col-xs-12") %>
+  <p>
+    <%= image_tag(url_for(@post.cover), id: "post-image-show", class: "container col-lg-12 col-md-12 col-xs-12") %>
+  </p>
   <%= simple_format(@post.body.gsub(/\n/, '<br />'), class: 'h5') %>
   <div>
     <br>
